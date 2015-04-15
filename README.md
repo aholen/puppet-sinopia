@@ -26,7 +26,7 @@ There are two variants to install sinopia using this Puppet module: Apply-mode (
 
 #### class sinopia
 
-Installs sinopia + required npms in one defined directory and integrates the sinopia as a service (/etc/init.d/sinopia). It also creates a user to run the sinopia server (default: sinopia). If you wish, you can change the username, see examples below.
+Installs sinopia + required npms in one defined directory and integrates the sinopia as a service (/etc/init.d/sinopia). It also creates a user to run the sinopia server (default: sinopia). If you wish, you can change the username, see examples below. If you choose for the module not to manage home directory, the homedirectory for the deamon_user must exist.
 
 Examples:
 
@@ -54,6 +54,7 @@ You can also override several configuration parameters.
     conf_admin_pw_hash 	    => 'your-pw-hash',
     conf_port          	    => '8080',
     deamon_user        	    => 'sinopiaxy',
+    manage_home             => true,
     conf_listen_to_address 	=> '127.0.0.1',
     conf_max_body_size	    => '10mb',
     conf_max_age_in_sec	    => '604800',
@@ -68,6 +69,7 @@ The default values for all so far configurable parameters are:
     install_root       	      => '/opt',
     install_dir        	      => 'sinopia',
     deamon_user        	      => 'sinopia',
+    manage_home               => true,
     conf_listen_to_address    => '0.0.0.0',
     conf_port          	      => '4783',
     conf_admin_pw_hash
