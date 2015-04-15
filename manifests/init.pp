@@ -23,6 +23,7 @@ class sinopia (
   $install_root              = '/opt',
   $install_dir               = 'sinopia',
   $deamon_user               = 'sinopia',
+  $deamon_user_homedir       = '/home',
   $manage_home               = true,
   $conf_listen_to_address    = '0.0.0.0',
   $conf_port                 = '4783',
@@ -71,6 +72,7 @@ class sinopia (
     require      => [File[$install_path,$modules_path],User[$deamon_user]],
     notify       => $service_notify,
     exec_as_user => $deamon_user,
+    exec_as_user_home => $deamon_user_homedir,
   }
 
   ###
