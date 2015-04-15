@@ -23,6 +23,7 @@ class sinopia (
   $install_root              = '/opt',
   $install_dir               = 'sinopia',
   $deamon_user               = 'sinopia',
+  $manage_home               = true,
   $conf_listen_to_address    = '0.0.0.0',
   $conf_port                 = '4783',
   $conf_admin_pw_hash,
@@ -40,7 +41,7 @@ class sinopia (
   user { $deamon_user:
     ensure     => present,
     gid        => $deamon_user,
-    managehome => true,
+    managehome => $manage_home,
     require    => Group[$deamon_user]
   }
 
